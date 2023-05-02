@@ -58,7 +58,7 @@ app.get('/', (req,res) => {
     else if (req.session.authenticated){
         var username = req.query.user;
         var html = `
-        Hello, ${username} !
+        Hello, ${username}!
         <button onclick="location.href='/createUser'">Go to Members Area</button>
         <button onclick="location.href='/logout'">Logout</button>
         `;
@@ -181,8 +181,25 @@ app.post('/submitUser', async (req,res) => {
 	await userCollection.insertOne({username: username, password: hashedPassword});
 	console.log("Inserted user");
 
-    var html = "successfully created user";
-    res.send(html);
+    
+    res.redirect('/members');
+});
+
+app.get('/members', (req,res) => {
+    const username = req.session.user;
+    if (req.session.authenticated) {
+        var html = `
+            Hello, ${username}!
+            <br>
+            <img src="/public/fluffy.gif"><img/>
+        `;
+        res.send(html);
+    }
+    else {
+        res.redirect('/login');
+    }
+    
+    
 });
 
 app.post('/loggingin', async (req,res) => {
@@ -220,6 +237,7 @@ app.post('/loggingin', async (req,res) => {
 		return;
 	}
 });
+
 
 app.get('/loggedin', (req,res) => {
     if (!req.session.authenticated) {
