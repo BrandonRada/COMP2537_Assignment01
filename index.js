@@ -34,7 +34,7 @@ const userCollection = database.db(mongodb_database).collection('users');
 app.use(express.urlencoded({extended: false}));
 
 var mongoStore = MongoStore.create({
-	mongoUrl: `mongodb+srv://${mongodb_user}:${mongodb_password}@${mongodb_host}/sessions`,
+	mongoUrl: `mongodb+srv://${mongodb_user}:${mongodb_password}@${mongodb_host}/session`,
 	crypto: {
 		secret: mongodb_session_secret
 	}
@@ -49,7 +49,8 @@ app.use(session({
 ));
 
 app.get('/', (req,res) => {
-    res.send("<h1>Hello World!</h1>");
+    var html = '<button>Submit</button>';
+    res.send(html);
 });
 
 app.get('/nosql-injection', async (req,res) => {
