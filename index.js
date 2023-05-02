@@ -169,7 +169,7 @@ app.post('/submitUser', async (req,res) => {
 			password: Joi.string().max(20).required()
 		});
 	
-	const validationResult = schema.validate({username, password});
+	const validationResult = schema.validate({username, email, password});
 	if (validationResult.error != null) {
 	   console.log(validationResult.error);
 	   res.redirect("/createUser");
