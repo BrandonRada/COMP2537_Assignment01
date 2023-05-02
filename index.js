@@ -49,11 +49,24 @@ app.use(session({
 ));
 
 app.get('/', (req,res) => {
-    var html = `
+    if (!req.session.authenticated) {
+        var html = `
         <button onclick="location.href='/createUser'">Sign Up</button>
         <button onclick="location.href='/login'">Login</button>
-    `;
+        `;
+    }
+    else if (req.session.authenticated){
+        var username = req.query.user;
+        var html = `
+        Hello, ${username} !
+        <button onclick="location.href='/createUser'">Go to Members Area</button>
+        <button onclick="location.href='/logout'">Logout</button>
+        `;
+    }
+
+    
     res.send(html);
+
 });
 
 app.get('/nosql-injection', async (req,res) => {
@@ -221,6 +234,7 @@ app.get('/logout', (req,res) => {
     You are logged out.
     `;
     res.send(html);
+    res.redirect('/');
 });
 
 
