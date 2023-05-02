@@ -222,20 +222,22 @@ app.get('/loggedin', (req,res) => {
     if (!req.session.authenticated) {
         res.redirect('/login');
     }
+    res.redirect('/');
     var html = `
     You are logged in!
     `;
     res.send(html);
-    res.redirect('/');
+    
 });
 
 app.get('/logout', (req,res) => {
 	req.session.destroy();
+    res.redirect('/');
     var html = `
     You are logged out.
     `;
     res.send(html);
-    res.redirect('/');
+    
 });
 
 
