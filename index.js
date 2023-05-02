@@ -59,7 +59,7 @@ app.get('/', (req,res) => {
         var username = req.query.user;
         var html = `
         Hello, ${username}!
-        <button onclick="location.href='/createUser'">Go to Members Area</button>
+        <button onclick="location.href='/members'">Go to Members Area</button>
         <button onclick="location.href='/logout'">Logout</button>
         `;
     }
@@ -243,10 +243,7 @@ app.get('/loggedin', (req,res) => {
     if (!req.session.authenticated) {
         res.redirect('/login');
     }
-    var html = `
-    You are logged in!
-    `;
-    res.send(html);
+    res.redirect('/');
     
 });
 
