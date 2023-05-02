@@ -202,7 +202,7 @@ app.get('/members', (req,res) => {
         var html = `
             Hello, ${username}!
             <br>
-            <img src="/public/${cat}.jpg"><img/>
+            <img src="public/${cat}.jpg"><img/>
         `;
         res.send(html);
     }
