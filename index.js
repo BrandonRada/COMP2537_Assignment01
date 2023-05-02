@@ -49,7 +49,10 @@ app.use(session({
 ));
 
 app.get('/', (req,res) => {
-    var html = '<button>Submit</button>';
+    var html = `
+        <button onclick="location.href='/createUser'">Sign Up</button>
+        <button onclick="location.href='/login'">Login</button>
+    `;
     res.send(html);
 });
 
