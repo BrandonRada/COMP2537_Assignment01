@@ -136,6 +136,7 @@ app.get('/createUser', (req,res) => {
     create user
     <form action='/submitUser' method='post'>
     <input name='username' type='text' placeholder='username'>
+    <input name='email' type='email' placeholder='email'>
     <input name='password' type='password' placeholder='password'>
     <button>Submit</button>
     </form>
@@ -158,11 +159,13 @@ app.get('/login', (req,res) => {
 
 app.post('/submitUser', async (req,res) => {
     var username = req.body.username;
+    var email = req.body.email;
     var password = req.body.password;
 
 	const schema = Joi.object(
 		{
 			username: Joi.string().alphanum().max(20).required(),
+			email: Joi.string().email().required(),
 			password: Joi.string().max(20).required()
 		});
 	
