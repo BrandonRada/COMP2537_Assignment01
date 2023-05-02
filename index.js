@@ -187,11 +187,22 @@ app.post('/submitUser', async (req,res) => {
 
 app.get('/members', (req,res) => {
     const username = req.session.user;
+    const randomNumber = Math.floor(Math.random() * 3);
     if (req.session.authenticated) {
+        const cat = "";
+        if(randomNumber == 0){
+            const cat = "cat0";
+        }
+        else if(randomNumber == 1){
+            const cat = "cat2";
+        }
+        else if(randomNumber == 2){
+            const cat = "cat3";
+        }
         var html = `
             Hello, ${username}!
             <br>
-            <img src="/public/fluffy.gif"><img/>
+            <img src="/public/${cat}.jpg"><img/>
         `;
         res.send(html);
     }
