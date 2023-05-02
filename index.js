@@ -225,7 +225,6 @@ app.get('/loggedin', (req,res) => {
     if (!req.session.authenticated) {
         res.redirect('/login');
     }
-    res.redirect('/');
     var html = `
     You are logged in!
     `;
