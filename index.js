@@ -194,10 +194,10 @@ app.get('/members', (req,res) => {
             const cat = "cat0";
         }
         else if(randomNumber == 1){
-            const cat = "cat2";
+            const cat = "cat1";
         }
         else if(randomNumber == 2){
-            const cat = "cat3";
+            const cat = "cat2";
         }
         var html = `
             Hello, ${username}!
