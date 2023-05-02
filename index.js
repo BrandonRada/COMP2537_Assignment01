@@ -226,6 +226,7 @@ app.get('/loggedin', (req,res) => {
     You are logged in!
     `;
     res.send(html);
+    res.redirect('/');
 });
 
 app.get('/logout', (req,res) => {
